@@ -1,0 +1,47 @@
+% Laget av Joakim Ellestad
+% A line starting with % is a comment. In some cases, I have included a command preceded by a %. You may activate the command by removing the %.
+%*********************Informasjon om oppsettet*****************************
+% Denne \latex template kan brukes for lengre rapporter med flere kapitler, små bøker og avhandlinger. Det gjøres med "report" i `\documentclass[(...)]{report}`, for mindre rapporter kan "article" erstatte report. 
+
+%*******************Informasjon om siteringer*****************************
+% Denne templaten bruker Harvard sitering med "agsm" stilen. 
+% Alle kidler går inn i kilder.bib. Pass at riktige felter er fylt inn i kilder.bib
+% kilde: https://guides.lib.monash.edu/ld.php?content_id=8481587
+% Kilde: https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+
+
+%*****************Hvordan skrive*********************************
+% Del opp i så mange filer som mulig. Det gjør det enkelt å arbeide i. Eks. hvert kapittel i egen fil. De er nummerert 00,01,02 for sorteringen sin skyld, ingen annet grunn. Hvert kapittel starter med \chapter evt. \chapter*, merk stjerna. Det fjerner "Chapter 1", men lar kapittel tittelen være. Evt. kan man bruker en renewcommand for å erstatte chapter 1 med kapittel 1 f.eks. 
+
+% Videre brukes \section for å dele opp kapittele videre. \subsection kan brukes, men for guds skyld ikke bruk \subsubsection, da har det gått for langt. 
+%***************************************************************
+
+%%===========================================
+\documentclass[a4paper,12pt]{report}
+\usepackage{usepackage}
+%%===========================================
+
+
+%%============================================
+\begin{document}
+\input{inc/00cover.tex} % This is the titlepage
+\setcounter{page}{0}
+\pagenumbering{arabic}
+\renewcommand{\contentsname}{Innhold}
+\tableofcontents
+\setcounter{page}{0}
+\pagenumbering{arabic}
+%=============================================
+% Bruk include for å legge til flere .tex filer
+\setcounter{chapter}{1}
+\input{inc/01innledning.tex}
+\input{inc/02metode.tex}
+
+%%============================================
+%%\bibliographystyle{unsrt}
+\bibliographystyle{agsm}
+%\addcontentsline{toc}{chapter}{\bibname}
+\renewcommand\bibname{Kilder}
+\bibliography{kilder.bib} 
+%%=============================================
+\end{document}
